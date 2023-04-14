@@ -48,7 +48,9 @@ def ordenar_por_nome():
     print("Lista de compras ordenada por nome:")
 
 def ordenar_por_preco():
-    lista_de_compras.sort(key=lambda x: x["preco"])
+    for item in lista_de_compras:
+        item["valor_total"] = item["preco"] * item["quantidade"]
+    lista_de_compras.sort(key=lambda x: x["valor_total"], reverse=True)
     print("Lista de compras ordenada por preço:")
 
 def ordenar_por_quantidade():
@@ -91,7 +93,6 @@ while True:
         print("\n========================")
         somar_preco()
         print("\n========================")
-        print("Fim")
         break
     else:
         print("Insira uma opção válida!")
