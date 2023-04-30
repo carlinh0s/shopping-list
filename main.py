@@ -1,8 +1,6 @@
 from kivymd.app import MDApp
-from kivymd.uix.button import MDIconButton, MDFillRoundFlatButton
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.boxlayout import MDBoxLayout
-from kivymd.uix.selectioncontrol import MDCheckbox
 from operator import itemgetter
 from kivymd.uix.list import OneLineAvatarIconListItem, IconRightWidget, IconLeftWidgetWithoutTouch
 
@@ -84,12 +82,6 @@ class MainApp(MDApp):
             self.theme_cls.theme_style = "Dark"
         else:
             self.theme_cls.theme_style = "Light"
-
-    def on_pause(self):
-        return True
-
-    def on_resume(self):
-        pass
 
 class DialogContent(MDBoxLayout):
     def __init__(self, **kwargs):
