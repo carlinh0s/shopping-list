@@ -1,0 +1,106 @@
+<MDFilterChip@MDChip>
+    icon: ""
+    icon_color: 0, 0, 0, 0
+    size_hint_x: None
+    width: "150dp"
+    height: "35dp"
+    text_align: 'center'
+    padding: (0, 0, 0, 0)
+
+
+MDFloatLayout:
+
+    MDTopAppBar:
+        title: "Shopping List"
+        elevation: 3
+        left_action_items: [['alpha-s-circle-outline']]
+        right_action_items: [['theme-light-dark', lambda x: app.switch_theme()]]
+        pos_hint: {"top": 1}
+
+    MDGridLayout:
+        cols: 3
+        rows: 4
+        spacing: "15dp"
+        elevation: 3
+        padding: "20dp"
+        size_hint_y: None
+        height: "50dp"
+        pos_hint: {"top": .9}
+
+        MDFilterChip:
+            label: "NOME"
+            text: 'NOME'
+            on_release: app.sort_list("Nome")
+        MDFilterChip:
+            label: "VALOR"
+            text: 'VALOR'
+            on_release: app.sort_list("Valor")
+        MDFilterChip:
+            label: "QUANTIDADE"
+            text: 'QUANTIDADE'
+            on_release: app.sort_list("Quantidade")
+
+    ScrollView:
+        pos_hint: {"top": .80}
+        size_hint: 1, .80
+
+        MDList:
+            id: container
+            padding: "10dp"
+            spacing: "10dp"
+            height: self.minimum_height
+
+    MDIconButton:
+        icon: "cart-plus"
+        theme_text_color: "Custom"
+        text_color: 1, 1, 1, 1
+        pos_hint: {"center_x": 0.9, "center_y": 0.1}
+        md_bg_color: app.theme_cls.primary_color
+        on_release: app.show_lista_dialog()
+
+<DialogContent>:
+    orientation: "vertical"
+    spacing: "10dp"
+    size_hint: 1, None
+    height: "350dp"
+
+    GridLayout:
+        rows: 4
+        padding: "10dp"
+        spacing: "15dp"
+
+        MDTextField:
+            id: item_name
+            hint_text: "Nome do item"
+            max_text_length: 15
+
+        MDTextField:
+            id: item_value
+            hint_text: "Valor"
+            input_filter: "float"
+            max_text_length: 8
+
+        MDTextField:
+            id: item_quantity
+            hint_text: "Quantidade"
+            input_filter: "int"
+            max_text_length: 3
+
+        MDLabel:
+            id: item_list
+            text: ""
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: "60dp"
+        padding: "10dp"
+        spacing: "10dp"
+
+        MDRaisedButton:
+            text: "ADICIONAR"
+            on_release: app.add_list(), app.close_dialog(), app.show_list()
+        MDFlatButton:
+            text: 'CANCELAR'
+            on_release: app.close_dialog()
+            
