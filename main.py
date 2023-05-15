@@ -72,7 +72,7 @@ class MainApp(MDApp):
 
     def calcular_total(self):
         valor_total = sum(item[1] * item[2] for item in self.items)
-        self.total_widget.text = f"[b]VALOR TOTAL: R$ {valor_total:.2f}[/b]"
+        self.total_widget.text = f"VALOR TOTAL: R$ {valor_total:.2f}"
 
     def show_list(self):
         self.root.ids["container"].clear_widgets()
