@@ -20,22 +20,22 @@ MDFloatLayout:
     MDGridLayout:
         cols: 3
         rows: 4
-        spacing: "15dp"
+        spacing: "35dp"
         elevation: 3
         padding: "20dp"
         size_hint_y: None
         height: "50dp"
         pos_hint: {"top": .9}
 
-        MDFilterChip:
+        MDRectangleFlatButton:
             label: "NOME"
             text: 'NOME'
             on_release: app.sort_list("Nome")
-        MDFilterChip:
+        MDRectangleFlatButton:
             label: "VALOR"
             text: 'VALOR'
             on_release: app.sort_list("Valor")
-        MDFilterChip:
+        MDRectangleFlatButton:
             label: "QUANTIDADE"
             text: 'QUANTIDADE'
             on_release: app.sort_list("Quantidade")
@@ -73,22 +73,24 @@ MDFloatLayout:
             id: item_name
             hint_text: "Nome do item"
             max_text_length: 15
+            hint_text_color_normal: '#808080'
+            line_color_normal: '#808080'
 
         MDTextField:
             id: item_value
             hint_text: "Valor"
             input_filter: "float"
             max_text_length: 8
+            hint_text_color_normal: '#808080'
+            line_color_normal: '#808080'
 
         MDTextField:
             id: item_quantity
             hint_text: "Quantidade"
             input_filter: "int"
             max_text_length: 3
-
-        MDLabel:
-            id: item_list
-            text: ""
+            hint_text_color_normal: '#808080'
+            line_color_normal: '#808080'
 
     BoxLayout:
         orientation: 'horizontal'
@@ -100,7 +102,11 @@ MDFloatLayout:
         MDRaisedButton:
             text: "ADICIONAR"
             on_release: app.add_list(), app.close_dialog(), app.show_list()
-        MDFlatButton:
+            text_color: 1, 1, 1, 1
+        MDRaisedButton:
             text: 'CANCELAR'
             on_release: app.close_dialog()
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1 
+            md_bg_color: app.theme_cls.primary_color
             
